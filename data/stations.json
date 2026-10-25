@@ -1,0 +1,491 @@
+{
+  "version": 1,
+  "stations": [
+    {
+      "id": "9617a958-0601-11e8-ae97-52543be04c81",
+      "name": "Radio Paradise Main Mix (EU) 320k AAC",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "california",
+        "eclectic",
+        "free",
+        "internet",
+        "non-commercial",
+        "paradise",
+        "radio"
+      ],
+      "codec": "AAC",
+      "bitrate": 320,
+      "streamUrl": "http://stream-uk1.radioparadise.com/aac-320",
+      "homepage": "https://radioparadise.com/",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fradioparadise.com%2F&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-a9679866-3021-470f-9afd-4d6d140b9e9a",
+      "name": "Kane FM",
+      "country": "The United Kingdom Of Great Britain And Northern Ireland",
+      "countryCode": "",
+      "genres": [
+        "Indie,alternative,electro"
+      ],
+      "codec": "MP3",
+      "bitrate": 0,
+      "streamUrl": "https://stream.kanefm.com:10375/;html5",
+      "homepage": "https://www.kanefm.com/",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.kanefm.com%2F&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-ec7de79a-c6cc-4653-a41a-75bc7316f566",
+      "name": "NME1",
+      "country": "The United Kingdom Of Great Britain And Northern Ireland",
+      "countryCode": "",
+      "genres": [
+        "Indie,rock"
+      ],
+      "codec": "MP3",
+      "bitrate": 128,
+      "streamUrl": "https://listen-nme.sharp-stream.com/nme1.mp3",
+      "homepage": "https://www.nme.com/",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.nme.com%2F&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-83ae43b3-a88b-4eb2-be71-078c36b04dc3",
+      "name": "NME 2",
+      "country": "The United Kingdom Of Great Britain And Northern Ireland",
+      "countryCode": "",
+      "genres": [
+        "Indie, Alternative Rock, Dance"
+      ],
+      "codec": "MP3",
+      "bitrate": 256,
+      "streamUrl": "http://listen-nme.sharp-stream.com/nme2high.mp3?ref=RF",
+      "homepage": "https://www.nme.com/audio?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.nme.com%2Faudio%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-05187494-766d-47fb-9f8d-e5c43d478d97",
+      "name": "Punk Fm Brasil",
+      "country": "Brazil",
+      "countryCode": "",
+      "genres": [
+        "Punk,Rock"
+      ],
+      "codec": "MP3",
+      "bitrate": 128,
+      "streamUrl": "https://radio.punkfm.com.br/listen/punkfmbrasil/punkfmbrasil.mp3",
+      "homepage": "https://punkfm.com.br",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fpunkfm.com.br&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-07ea2394-863b-4bba-b7bb-68a905f5b216",
+      "name": "Paul in Rio",
+      "country": "Brazil",
+      "countryCode": "",
+      "genres": [
+        "Bossa Nova, Samba, MPB, Soul, Jazz"
+      ],
+      "codec": "MP3",
+      "bitrate": 128,
+      "streamUrl": "https://usa10.fastcast4u.com/paulinrio",
+      "homepage": "https://www.ilove.rio/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.ilove.rio%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-3f2cc117-3a4f-4aab-b175-5f18c5234266",
+      "name": "Radio Easy Rock",
+      "country": "Itally",
+      "countryCode": "",
+      "genres": [
+        "Classic Rock, Rock, Alternative Rock"
+      ],
+      "codec": "AAC",
+      "bitrate": 64,
+      "streamUrl": "https://sphera.fluidstream.eu/easyrock.aac",
+      "homepage": "https://www.radioeasyrock.it/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radioeasyrock.it%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-ce29ccb2-fed0-4770-9e73-70673d317cff",
+      "name": "Radio Pico",
+      "country": "Italy",
+      "countryCode": "",
+      "genres": [
+        "pop, adult contemporary"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream9.xdevel.com/audio0s976126-1032/stream/icecast.audio",
+      "homepage": "https://www.radiopico.it/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radiopico.it%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-779acfcd-bfad-464d-8349-02cead18702d",
+      "name": "Radio Studio Nord",
+      "country": "Italy",
+      "countryCode": "",
+      "genres": [
+        "Pop,Rock ,Adult Contemporary"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://nr6.newradio.it:19104/stream",
+      "homepage": "https://www.rsn.it/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.rsn.it%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-d729cc63-8ec9-447e-b76d-f7a12b5f81b2",
+      "name": "Alpha Boys School Radio",
+      "country": "Jamaica",
+      "countryCode": "",
+      "genres": [
+        "ska, reggae, rocksteady, dub, jazz"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "http://alphaboys-live.streamguys1.com/alphaboys.mp3?utm_source=chatgpt.com",
+      "homepage": "https://www.alphaboysschoolradio.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.alphaboysschoolradio.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-eae07c00-be19-4771-9540-12a48699f295",
+      "name": "Radio Coast.com",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Easy listening,chillout"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "http://209.133.221.250:8157/stream",
+      "homepage": "https://radiocoast.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fradiocoast.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-c8551327-0750-4de2-b826-c06f4b58eddc",
+      "name": "KNES Texas",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Country,Bluegrass"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://ice5.securenetsystems.net/KNES",
+      "homepage": "https://www.texas99.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.texas99.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-779adc53-a9ca-4f70-867b-bbcbc4a9625b",
+      "name": "Radio Free Brooklyn",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "indie, alternative, rock, jazz, hip hop, elettroni"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "http://patmos.cdnstream.com:9300/live",
+      "homepage": "https://www.radiofreebrooklyn.org/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radiofreebrooklyn.org%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-d29f4cc7-c04e-406d-ba7f-a455a87433ef",
+      "name": "Upbeat Radio",
+      "country": "The United Kingdom Of Great Britain And Northern Ireland",
+      "countryCode": "",
+      "genres": [
+        "Dance, hit, Top 40"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://live.upbeat.pw/",
+      "homepage": "https://upbeatradio.net",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fupbeatradio.net&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-b86a8c8f-e735-4042-af45-70e5d8b91db4",
+      "name": "Rockkanalen",
+      "country": "Denmark",
+      "countryCode": "",
+      "genres": [
+        "Rock, classic rock"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.kanalplus.fm/kp96",
+      "homepage": "https://rockkanalen.dk/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Frockkanalen.dk%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-900cc7b9-a477-41eb-99bb-b6e9cef0a424",
+      "name": "Milano XR",
+      "country": "Italy",
+      "countryCode": "",
+      "genres": [
+        "Rock alternativo, classic rock"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://milanoxr.gatesweb.info:8443/?utm_source=chatgpt.com",
+      "homepage": "https://milanoxr.weebly.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fmilanoxr.weebly.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-e51b1e24-e5ff-415b-a7b4-c0e704e2a41a",
+      "name": "Indie XL",
+      "country": "The Netherlands",
+      "countryCode": "",
+      "genres": [
+        "Indie,alternative"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://server-23.stream-server.nl:18438/;listen.pls_",
+      "homepage": "https://www.indiexl.nl/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.indiexl.nl%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-e20ebc07-9495-4af1-87fc-2998ac64b8a9",
+      "name": "Radio Cobra Detroit",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Alternative, rock, soul, funk , '80/'90"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://streaming.radio.co/s09cc170d0/listen",
+      "homepage": "https://www.radiocobradetroit.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radiocobradetroit.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-27f18f9e-564a-4c5e-8856-7a35efdbf58b",
+      "name": "Radio Free Texas",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Texas country, Americana e Red Dirt"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://server10.reliastream.com/proxy/damiller?mp=/stream",
+      "homepage": "https://radiofreetexas.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fradiofreetexas.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-21cb2e6f-d942-4d02-b3bd-70b2b0e6bd89",
+      "name": "Miami Beach Radio",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Hits, pop,Ocean Drive,South Beach"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://streaming.radiostreamlive.com/miamibeachradio_devices",
+      "homepage": "https://www.miamibeachradio.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.miamibeachradio.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-30a8f691-646b-4d75-980f-4f03278b50cf",
+      "name": "Hot Radio Maine",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Pop,news,local"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://ice9.securenetsystems.net/WHTP",
+      "homepage": "https://hotradiomaine.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fhotradiomaine.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-02b2f0a6-bec5-481d-bdcb-6a244349f038",
+      "name": "ALT 98.7",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Alternative,local"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.revma.ihrhls.com/zc201/hls.m3u8",
+      "homepage": "https://alt987fm.iheart.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Falt987fm.iheart.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-78beaacd-a867-4ee0-8f8e-204f983003e4",
+      "name": "Z100 NY",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Top 40 / Pop"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.revma.ihrhls.com/zc1469",
+      "homepage": "https://z100.iheart.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fz100.iheart.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-aaede02b-577d-4350-b8a1-0a79fabe489a",
+      "name": "DC 101",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Alternative,rock"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.revma.ihrhls.com/zc2525",
+      "homepage": "https://dc101.iheart.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fdc101.iheart.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-d3d6e1d8-f208-4f56-ac3d-4d50ee05f754",
+      "name": "94.5 The Buzz Houston, Texas",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Alternative, rock"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.revma.ihrhls.com/zc2281",
+      "homepage": "https://thebuzz.iheart.com/?utm_source=chatgpt.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fthebuzz.iheart.com%2F%3Futm_source%3Dchatgpt.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-33158c21-9eb6-4b1e-bb29-ae7352dd5ed9",
+      "name": "St. Louis classic rock",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Rock,Hard rock"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://slcr.me/SLCR1",
+      "homepage": "https://stlouisclassicrock.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fstlouisclassicrock.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-4f164b60-0ccf-4c0f-a024-67bf18e11950",
+      "name": "Radio ABF",
+      "country": "France",
+      "countryCode": "",
+      "genres": [
+        "Electronic, bass music"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.radioabf.com/abf-hd.mp3",
+      "homepage": "https://www.radioabf.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radioabf.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-644caa38-8fe7-49ae-aa8d-936388eb016a",
+      "name": "JB Radio-2",
+      "country": "Web,International",
+      "countryCode": "",
+      "genres": [
+        "International, Rock, blues, indie , pop"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://mediacp.jb-radio.net:8001/aac",
+      "homepage": "https://jb-radio.net",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fjb-radio.net&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-25de3a09-a37f-4cad-8d5e-a75137d2a5cc",
+      "name": "Digital Revolution Radio",
+      "country": "International,web",
+      "countryCode": "",
+      "genres": [
+        "Hard rock ,heavy metal"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "http://stream.radiojar.com/618fw7nphrwtv",
+      "homepage": "https://www.digitalrevolutionradio.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.digitalrevolutionradio.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    },
+    {
+      "id": "manual-29d32ebe-1590-4893-8030-c0ca554c3677",
+      "name": "Radio Calico",
+      "country": "The United States Of America",
+      "countryCode": "",
+      "genres": [
+        "Pop, rock, soul"
+      ],
+      "codec": "",
+      "bitrate": 0,
+      "streamUrl": "https://stream.radio-calico.com/calico",
+      "homepage": "https://www.radio-calico.com",
+      "favicon": "https://www.google.com/s2/favicons?domain_url=https%3A%2F%2Fwww.radio-calico.com&sz=128",
+      "source": "manual",
+      "verification": "unverified"
+    }
+  ]
+}
