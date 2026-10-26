@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Hls from "hls.js";
 
 type Station = {
   id: string;
@@ -57,8 +58,10 @@ export default function Home() {
   const [error, setError] = useState("");
   const [playing, setPlaying] = useState("");
   const [connecting, setConnecting] = useState("");
+  const [selectedStationId, setSelectedStationId] = useState("");
   const playTimeoutRef = useRef<number | null>(null);
-  const currentStation = stations.find(s => s.id === playing) || stations.find(s => s.id === connecting) || null;
+  const hlsRef = useRef<Hls | null>(null);
+  const currentStation = stations.find(s => s.id === selectedStationId) || stations.find(s => s.id === playing) || stations.find(s => s.id === connecting) || null;
   const logoForStation = (id: string) => { const station = stations.find(s => s.id === id); return id === "manual-a9679866-3021-470f-9afd-4d6d140b9e9a" ? "/kane-fm.png" : stationLogos[id]?.logoUrl || station?.favicon || ""; };
   const [trackTitle, setTrackTitle] = useState("");
   const [theme, setTheme] = useState("amber");
@@ -313,33 +316,68 @@ export default function Home() {
 
   function listen(s: Station) {
     setQuery("");
-    const audio = document.getElementById("hq-audio") as HTMLAudioElement;
+    const audio = document.getElementById("hq-audio") as HTMLAudioElement | null;
+    if (!audio) return;
 
-    if (playTimeoutRef.current !== null) {
-      window.clearTimeout(playTimeoutRef.current);
-      playTimeoutRef.current = null;
-    }
+    const clearPlayTimeout = () => {
+      if (playTimeoutRef.current !== null) {
+        window.clearTimeout(playTimeoutRef.current);
+        playTimeoutRef.current = null;
+      }
+    };
 
-    if (playing === s.id && !audio.paused) {
+    const showPlayError = (stationId: string, message: string) => {
+      if (audio.dataset.stationId !== stationId) return;
+      clearPlayTimeout();
+      setPlaying("");
+      setConnecting("");
+      setError(message);
+    };
+
+    clearPlayTimeout();
+
+    // Pausa della stazione attualmente in riproduzione.
+    if (selectedStationId === s.id && playing === s.id && !audio.paused) {
       audio.pause();
       setPlaying("");
       setConnecting("");
       return;
     }
 
+    // Ripresa della stessa sorgente, inclusi i flussi gestiti da hls.js.
+    if (
+      selectedStationId === s.id &&
+      audio.dataset.stationId === s.id &&
+      audio.paused &&
+      (Boolean(audio.src) || hlsRef.current !== null)
+    ) {
+      setError("");
+      setConnecting(s.id);
+      audio.play().catch(() => {
+        showPlayError(s.id, "Impossibile riprendere questa radio. Controlla il flusso o riprova.");
+      });
+      return;
+    }
+
+    // Chiude l'eventuale sessione HLS precedente prima di cambiare stazione.
+    hlsRef.current?.destroy();
+    hlsRef.current = null;
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+
+    setSelectedStationId(s.id);
     setError("");
     setPlaying("");
     setConnecting(s.id);
     audio.dataset.stationId = s.id;
     audio.dataset.isPlaying = "false";
-    audio.src = s.streamUrl;
-    audio.load();
 
     playTimeoutRef.current = window.setTimeout(() => {
       if (audio.dataset.stationId === s.id && audio.dataset.isPlaying !== "true") {
+        hlsRef.current?.destroy();
+        hlsRef.current = null;
         audio.pause();
-        audio.removeAttribute("src");
-        audio.load();
         setPlaying("");
         setConnecting("");
         setError("La radio non ha iniziato a riprodurre entro 12 secondi. Il flusso potrebbe non essere disponibile.");
@@ -347,16 +385,49 @@ export default function Home() {
       playTimeoutRef.current = null;
     }, 12000);
 
-    audio.play().catch(() => {
+    const startPlayback = () => {
       if (audio.dataset.stationId !== s.id) return;
-      if (playTimeoutRef.current !== null) {
-        window.clearTimeout(playTimeoutRef.current);
-        playTimeoutRef.current = null;
-      }
-      setPlaying("");
-      setConnecting("");
-      setError("Impossibile avviare questa radio. Controlla il flusso o riprova.");
-    });
+      audio.play().catch(() => {
+        showPlayError(s.id, "Impossibile avviare questa radio. Controlla il flusso o riprova.");
+      });
+    };
+
+    const isHls = /\.m3u8(?:$|[?#])/i.test(s.streamUrl);
+
+    if (isHls && !audio.canPlayType("application/vnd.apple.mpegurl") && Hls.isSupported()) {
+      const hls = new Hls();
+      hlsRef.current = hls;
+
+      hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+        if (audio.dataset.stationId === s.id) hls.loadSource(s.streamUrl);
+      });
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (audio.dataset.stationId === s.id) startPlayback();
+      });
+
+      hls.on(Hls.Events.ERROR, (_event, data) => {
+        if (!data.fatal || audio.dataset.stationId !== s.id) return;
+        clearPlayTimeout();
+        hls.destroy();
+        if (hlsRef.current === hls) hlsRef.current = null;
+        setPlaying("");
+        setConnecting("");
+        setError("Il flusso HLS non è riproducibile. Controlla il flusso o riprova.");
+      });
+
+      hls.attachMedia(audio);
+      return;
+    }
+
+    if (isHls && !audio.canPlayType("application/vnd.apple.mpegurl") && !Hls.isSupported()) {
+      showPlayError(s.id, "Questo browser non supporta la riproduzione HLS di questa radio.");
+      return;
+    }
+
+    audio.src = s.streamUrl;
+    audio.load();
+    startPlayback();
   }
 
   function toggleFavorite(s: Station) {
@@ -423,7 +494,7 @@ export default function Home() {
 
   const themeColors = { amber: { background: "#0a0d12", accent: "#fcd34d", soft: "#fde68a" }, ocean: { background: "#071521", accent: "#22d3ee", soft: "#a5f3fc" }, forest: { background: "#0b1711", accent: "#4ade80", soft: "#bbf7d0" }, purple: { background: "#160d26", accent: "#c084fc", soft: "#e9d5ff" }, ruby: { background: "#260d15", accent: "#fb7185", soft: "#fecdd3" }, silver: { background: "#16191e", accent: "#d1d5db", soft: "#f3f4f6" } }[theme as "amber" | "ocean" | "forest" | "purple" | "ruby" | "silver"];
 
-  return <main style={{ backgroundColor: themeColors.background, "--theme-accent": themeColors.accent, "--theme-soft": themeColors.soft } as React.CSSProperties} className="min-h-screen text-white">
+  return <main style={{ backgroundColor: themeColors.background, "--theme-accent": themeColors.accent, "--theme-soft": themeColors.soft } as React.CSSProperties} className="min-h-screen pb-28 sm:pb-24 text-white">
     <audio id="hq-audio"
       onPlaying={(e) => {
         const audio = e.currentTarget;
@@ -463,7 +534,26 @@ export default function Home() {
           <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--theme-soft)]">Now Playing</p>
           {currentStation ? <><h2 className="truncate text-xl font-semibold sm:text-2xl">{currentStation.name}</h2>{trackTitle && <p className="mt-1 truncate text-base font-medium text-white">{trackTitle.includes(" - ") ? <><span className="text-[var(--theme-soft)]">{trackTitle.split(" - ")[0]}</span><span> — {trackTitle.split(" - ").slice(1).join(" - ")}</span></> : trackTitle}</p>}<p className="mt-1 text-sm text-slate-400">{currentStation.country || "Country unavailable"} · {currentStation.codec || "Codec n/a"} · {currentStation.bitrate > 0 ? currentStation.bitrate : "Bitrate sconosciuto"}{currentStation.bitrate ? " kbps" : ""}</p>{connecting === currentStation.id && <div role="status" aria-live="polite" className="mt-3 flex items-center gap-3"><div className="flex h-6 items-center gap-1" aria-hidden="true">{[0,1,2,3,4].map(n => <span key={n} className="hq-stream-bar" />)}</div><div><p className="text-sm font-medium text-[var(--theme-accent)]">Connecting to radio...</p><p className="text-xs text-slate-400">Preparing your HQ audio stream. Just a moment.</p></div></div>}{connecting === currentStation.id ? <p className="mt-2 text-xs font-semibold tracking-wider text-[var(--theme-accent)]">● CONNECTING</p> : playing === currentStation.id ? <p className="mt-2 text-xs font-semibold tracking-wider text-[var(--theme-soft)]">● LIVE RADIO</p> : null}</> : <><h2 className="text-lg font-medium text-slate-300">No station playing</h2><p className="mt-1 text-sm text-slate-500">Choose a station and press Listen to start streaming.</p></>}
         </div>
-        {currentStation && <button onClick={() => { const audio = document.getElementById("hq-audio") as HTMLAudioElement; audio.pause(); setPlaying(""); }} className="shrink-0 rounded-lg border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-amber-300/50">Stop</button>}
+        {currentStation && <button onClick={() => {
+          const audio = document.getElementById("hq-audio") as HTMLAudioElement | null;
+          if (playTimeoutRef.current !== null) {
+            window.clearTimeout(playTimeoutRef.current);
+            playTimeoutRef.current = null;
+          }
+          hlsRef.current?.destroy();
+          hlsRef.current = null;
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.removeAttribute("src");
+            audio.dataset.isPlaying = "false";
+            audio.load();
+          }
+          setPlaying("");
+          setConnecting("");
+          setError("");
+          setTrackTitle("");
+        }} className="shrink-0 rounded-lg border border-white/15 px-4 py-2 text-sm text-slate-200 transition hover:border-amber-300/50">Stop</button>}
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
         <div className="mr-2"><p className="text-sm font-semibold text-[var(--theme-soft)]">Sleep Timer</p><p className="text-xs text-slate-400">Stop playback automatically</p></div>
@@ -616,5 +706,45 @@ export default function Home() {
       <p className="mt-8 text-xs leading-6 text-slate-500">Bitrate and codec are supplied by the directory and are not independent quality certifications. Some streams may not play in every browser.</p>
     </section>
     <footer className="border-t border-white/10 px-6 py-8 text-center text-xs text-slate-500">HQ RADIO BROADCAST · A world of radio, selected for sound</footer>
+    {currentStation && <div data-hq-fixed-player className="fixed inset-x-0 bottom-0 z-[60] border-t border-white/10 bg-[#0a0d12]/95 px-3 py-3 shadow-2xl backdrop-blur-xl sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] p-1">
+          {logoForStation(currentStation.id) ? <img src={logoForStation(currentStation.id)} alt="" className="h-full w-full object-contain" /> : <span className="font-bold text-[var(--theme-soft)]">{countryFlag(currentStation.country, stationLogos[currentStation.id]?.countryCode || "") || currentStation.name.slice(0, 2).toUpperCase()}</span>}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex min-w-0 items-center gap-2">
+            <p className="truncate text-sm font-semibold text-white">{currentStation.name}</p>
+            <span className={`shrink-0 text-[10px] font-bold uppercase tracking-wider ${playing === currentStation.id ? "text-[var(--theme-accent)]" : "text-slate-500"}`}>{playing === currentStation.id ? "● LIVE" : connecting === currentStation.id ? "CONNECTING" : "PAUSED"}</span>
+          </div>
+          <p className={`mt-1 truncate text-sm ${trackTitle ? "font-medium text-slate-100" : "text-xs text-slate-500"}`} title={trackTitle || "Track information unavailable"}>
+            {trackTitle ? (trackTitle.includes(" - ") ? trackTitle.split(" - ").slice(0, 2).join(" — ") : trackTitle) : "Track / programme information unavailable"}
+          </p>
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
+          <button type="button" aria-label="Play or resume" title="Play / Resume" onClick={() => { if (playing !== currentStation.id) listen(currentStation); }} disabled={playing === currentStation.id || connecting === currentStation.id} className="rounded-lg bg-[var(--theme-accent)] px-3 py-2 text-sm font-semibold text-black disabled:opacity-40">Play</button>
+          <button type="button" aria-label="Pause" title="Pause" onClick={() => { const audio = document.getElementById("hq-audio") as HTMLAudioElement | null; if (audio && playing === currentStation.id) { audio.pause(); setPlaying(""); setConnecting(""); } }} disabled={playing !== currentStation.id} className="rounded-lg border border-white/15 px-3 py-2 text-sm text-white disabled:opacity-40">Pause</button>
+          <button type="button" aria-label="Stop" title="Stop" onClick={() => {
+            const audio = document.getElementById("hq-audio") as HTMLAudioElement | null;
+            if (playTimeoutRef.current !== null) {
+              window.clearTimeout(playTimeoutRef.current);
+              playTimeoutRef.current = null;
+            }
+            hlsRef.current?.destroy();
+            hlsRef.current = null;
+            if (audio) {
+              audio.pause();
+              audio.currentTime = 0;
+              audio.removeAttribute("src");
+              audio.dataset.isPlaying = "false";
+              audio.load();
+            }
+            setPlaying("");
+            setConnecting("");
+            setError("");
+            setTrackTitle("");
+          }} className="rounded-lg border border-white/15 px-3 py-2 text-sm text-slate-200">Stop</button>
+        </div>
+      </div>
+    </div>}
   </main>;
 }
