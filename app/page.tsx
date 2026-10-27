@@ -159,7 +159,7 @@ export default function Home() {
 
     setTrackTitle("");
     loadMetadata();
-    const interval = window.setInterval(loadMetadata, 5000);
+    const interval = window.setInterval(loadMetadata, 15000);
     return () => {
       active = false;
       window.clearInterval(interval);
