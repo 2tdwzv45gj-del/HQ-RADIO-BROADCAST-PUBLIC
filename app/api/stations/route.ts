@@ -103,7 +103,7 @@ export async function GET(request: Request) {
         source: "curated_stations.json",
         note: "Catalogo curato manualmente. Il bitrate dichiarato non certifica da solo la qualità audio effettiva.",
       },
-      { headers: { "Cache-Control": "no-store" } },
+      { headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" } },
     );
   } catch {
     return NextResponse.json(
