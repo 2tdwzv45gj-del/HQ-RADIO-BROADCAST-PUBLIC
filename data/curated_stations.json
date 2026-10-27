@@ -1,8 +1,8 @@
 {
   "version": 1,
   "source": "Review Lab",
-  "updatedAt": "2026-10-25T09:54:53.957Z",
-  "count": 735,
+  "updatedAt": "2026-10-27T21:28:58.485147+00:00",
+  "count": 736,
   "stations": [
     {
       "id": "847ab878-67d8-49c1-9587-4098f3da3515",
@@ -23720,6 +23720,36 @@
       "reviewDecision": "KEEP",
       "reviewNotes": "",
       "reviewedAt": "2026-10-14T07:29:48.631Z"
+    },
+    {
+      "id": "52cdd47f-606b-40b6-925b-01de26db6fda",
+      "name": "Radio Free Brooklyn",
+      "country": "United States",
+      "countryCode": "US",
+      "state": "",
+      "language": "English",
+      "genres": [
+        "community",
+        "eclectic",
+        "independent"
+      ],
+      "codecDeclared": "MP3",
+      "bitrateDeclared": 0,
+      "streamUrl": "http://patmos.cdnstream.com:9300/live",
+      "homepage": "https://www.radiofreebrooklyn.org/",
+      "favicon": "",
+      "votes": 0,
+      "lastCheckOk": false,
+      "qualityClass": "UNVERIFIED",
+      "audioVerification": {
+        "status": "NOT_TESTED",
+        "checkedAt": null,
+        "measuredCodec": null,
+        "measuredBitrate": null,
+        "stability": null,
+        "notes": "Ascoltata e approvata manualmente dall'utente; verifica automatica non eseguita."
+      },
+      "rescanBatch": "rescan-2026-10-27"
     }
   ]
 }
