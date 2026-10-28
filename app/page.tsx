@@ -65,7 +65,62 @@ export default function Home() {
   const hlsRef = useRef<Hls | null>(null);
   const currentStation = stations.find(s => s.id === selectedStationId) || stations.find(s => s.id === playing) || stations.find(s => s.id === connecting) || null;
   const logoForStation = (id: string) => { const station = stations.find(s => s.id === id); return id === "manual-a9679866-3021-470f-9afd-4d6d140b9e9a" ? "/kane-fm.png" : stationLogos[id]?.logoUrl || station?.favicon || ""; };
+
+
   const [trackTitle, setTrackTitle] = useState("");
+
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
+
+    const station = currentStation;
+    if (!station) {
+      navigator.mediaSession.metadata = null;
+      return;
+    }
+
+    const title = trackTitle.trim() || station.name;
+
+    if ("MediaMetadata" in window) {
+      const artworkUrl = logoForStation(station.id);
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title,
+        artist: station.name,
+        album: "HQ RADIO BROADCAST",
+        artwork: artworkUrl
+          ? [
+              { src: artworkUrl, sizes: "96x96" },
+              { src: artworkUrl, sizes: "128x128" },
+              { src: artworkUrl, sizes: "256x256" }
+            ]
+          : []
+      });
+    }
+
+    try {
+      navigator.mediaSession.setActionHandler("play", () => {
+        listen(station);
+      });
+      navigator.mediaSession.setActionHandler("pause", () => {
+        const audio = document.getElementById("hq-audio") as HTMLAudioElement | null;
+        if (audio) {
+          audio.pause();
+          setPlaying("");
+          setConnecting("");
+        }
+      });
+    } catch {
+      // Alcuni browser non supportano tutti i comandi multimediali.
+    }
+
+    return () => {
+      try {
+        navigator.mediaSession.setActionHandler("play", null);
+        navigator.mediaSession.setActionHandler("pause", null);
+      } catch {
+        // Compatibilità con browser che non supportano questi comandi.
+      }
+    };
+  }, [currentStation?.id, playing, trackTitle]);
   const [theme, setTheme] = useState("amber");
   const [themeReady, setThemeReady] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
