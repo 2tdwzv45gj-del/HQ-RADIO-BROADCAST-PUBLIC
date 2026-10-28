@@ -60,6 +60,7 @@ export default function Home() {
   const [connecting, setConnecting] = useState("");
   const [selectedStationId, setSelectedStationId] = useState("");
   const [shareMenuStationId, setShareMenuStationId] = useState("");
+  const sharedAutoStartedRef = useRef("");
   const playTimeoutRef = useRef<number | null>(null);
   const hlsRef = useRef<Hls | null>(null);
   const currentStation = stations.find(s => s.id === selectedStationId) || stations.find(s => s.id === playing) || stations.find(s => s.id === connecting) || null;
@@ -286,6 +287,7 @@ export default function Home() {
   useEffect(() => {
     const sharedId = new URLSearchParams(window.location.search).get("station");
     if (!sharedId || !personalLibraryReady || stations.length === 0) return;
+    if (sharedAutoStartedRef.current === sharedId) return;
 
     const station = stations.find(item => item.id === sharedId);
 
@@ -294,10 +296,12 @@ export default function Home() {
       return;
     }
 
+    sharedAutoStartedRef.current = sharedId;
     setShowResults(true);
-    setQuery(station.name);
     setSelectedStationId(station.id);
-    setSaveMessage(`You opened ${station.name}. Press Listen to start the live stream.`);
+    setSaveMessage(`Opening ${station.name}…`);
+    listen(station);
+    setQuery(station.name);
   }, [stations, personalLibraryReady]);
 
   const results = useMemo(() => stations.filter(s => {
