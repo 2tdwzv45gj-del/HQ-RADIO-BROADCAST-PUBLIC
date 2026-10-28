@@ -59,6 +59,7 @@ export default function Home() {
   const [playing, setPlaying] = useState("");
   const [connecting, setConnecting] = useState("");
   const [selectedStationId, setSelectedStationId] = useState("");
+  const [shareMenuStationId, setShareMenuStationId] = useState("");
   const playTimeoutRef = useRef<number | null>(null);
   const hlsRef = useRef<Hls | null>(null);
   const currentStation = stations.find(s => s.id === selectedStationId) || stations.find(s => s.id === playing) || stations.find(s => s.id === connecting) || null;
@@ -282,6 +283,23 @@ export default function Home() {
     setStations(Array.from(combined.values()));
   }, [publicStations, personalStations, personalLibraryReady]);
 
+  useEffect(() => {
+    const sharedId = new URLSearchParams(window.location.search).get("station");
+    if (!sharedId || !personalLibraryReady || stations.length === 0) return;
+
+    const station = stations.find(item => item.id === sharedId);
+
+    if (!station) {
+      setSaveMessage("This station is no longer available in the catalog, or it belongs to another user's personal library.");
+      return;
+    }
+
+    setShowResults(true);
+    setQuery(station.name);
+    setSelectedStationId(station.id);
+    setSaveMessage(`You opened ${station.name}. Press Listen to start the live stream.`);
+  }, [stations, personalLibraryReady]);
+
   const results = useMemo(() => stations.filter(s => {
     const text = [s.name, s.country, s.tags, s.codec].join(" ").toLowerCase();
     const matchesText = text.includes(query.toLowerCase());
@@ -313,6 +331,12 @@ export default function Home() {
   }), [personalStations, libraryQuery]);
 
   const favoriteStations = useMemo(() => stations.filter(s => favoriteUrls.includes(s.streamUrl)), [stations, favoriteUrls]);
+
+  function stationShareUrl(s: Station) {
+    const url = new URL("https://www.hqradiobroadcast.app/");
+    url.searchParams.set("station", s.id);
+    return url.toString();
+  }
 
   function listen(s: Station) {
     setQuery("");
@@ -700,6 +724,14 @@ export default function Home() {
         <button onClick={() => listen(s)} className="mt-4 w-full rounded-lg bg-[var(--theme-accent)] px-4 py-3 text-sm font-semibold text-black">{playing === s.id ? "Pause" : "Listen"}</button>
         <button onClick={() => toggleFavorite(s)} disabled={savingUrl === s.streamUrl} className="mt-2 w-full rounded-lg border border-white/15 px-4 py-2 text-sm text-slate-200 disabled:cursor-wait disabled:opacity-60">{savingUrl === s.streamUrl ? "Please wait..." : favoriteUrls.includes(s.streamUrl) ? "♥ Remove from Favorites" : "♡ Add to Favorites"}</button>
 
+        <button onClick={() => setShareMenuStationId(shareMenuStationId === s.id ? "" : s.id)} className="mt-3 w-full rounded-lg border border-white/15 px-4 py-2 text-sm text-slate-200">↗ Share radio</button>
+        {shareMenuStationId === s.id && <div className="mt-2 grid grid-cols-2 gap-2">
+          <a href={`https://wa.me/?text=${encodeURIComponent(`Listen to ${s.name} on HQ RADIO BROADCAST: ${stationShareUrl(s)}`)}`} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 px-3 py-2 text-center text-xs">WhatsApp</a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(stationShareUrl(s))}`} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 px-3 py-2 text-center text-xs">Facebook</a>
+          <a href={`https://t.me/share/url?url=${encodeURIComponent(stationShareUrl(s))}&text=${encodeURIComponent(`Listen to ${s.name} on HQ RADIO BROADCAST`)}`} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 px-3 py-2 text-center text-xs">Telegram</a>
+          <button onClick={() => { const url = stationShareUrl(s); navigator.clipboard.writeText(url).then(() => setSaveMessage("Station link copied!")).catch(() => window.prompt("Copy this station link:", url)); }} className="rounded-lg border border-white/10 px-3 py-2 text-xs">Instagram · Copy link</button>
+          <button onClick={() => { const url = stationShareUrl(s); navigator.clipboard.writeText(url).then(() => setSaveMessage("Station link copied!")).catch(() => window.prompt("Copy this station link:", url)); }} className="col-span-2 rounded-lg border border-white/10 px-3 py-2 text-xs">Copy link</button>
+        </div>}
         {s.homepage && <a href={s.homepage} target="_blank" rel="noreferrer" className="mt-3 block text-center text-xs text-slate-400 underline">Official website</a>}
       </article>)}</div>}
       {showResults && !loading && !error && results.length === 0 && <p className="mt-8 text-slate-400">No stations match these filters.</p>}
