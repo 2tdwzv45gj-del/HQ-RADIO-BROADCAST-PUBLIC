@@ -23749,7 +23749,8 @@
         "stability": null,
         "notes": "Ascoltata e approvata manualmente dall'utente; verifica automatica non eseguita."
       },
-      "rescanBatch": "rescan-2026-10-27"
+      "rescanBatch": "rescan-2026-10-27",
+      "reviewDecision": "KEEP"
     },
     {
       "id": "30a09972-730a-42d8-8614-c9148b05992f",
@@ -23777,7 +23778,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "96175ea7-0601-11e8-ae97-52543be04c81",
@@ -23805,7 +23807,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "d1c00267-9915-4854-8f28-3e486f1c0591",
@@ -23830,7 +23833,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "96190e3e-0601-11e8-ae97-52543be04c81",
@@ -23859,7 +23863,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "0aed61c5-962f-4999-8a68-653d37834e41",
@@ -23884,7 +23889,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "c96a952e-4862-4304-b214-810df49856fc",
@@ -23909,7 +23915,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "645c7030-4baa-4497-8f98-aeccc4c34160",
@@ -23934,7 +23941,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "24c13b56-d669-4127-98b3-b0b1c22b4676",
@@ -23961,7 +23969,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "abe84722-1ff1-471a-b048-7f761b2056a0",
@@ -23986,7 +23995,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "961bb8ba-0601-11e8-ae97-52543be04c81",
@@ -24013,7 +24023,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "c81214db-2625-4d5c-8c39-b79ee8e6c923",
@@ -24038,7 +24049,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "6a10e6e7-5e0d-43c9-b4f0-16211d991425",
@@ -24063,7 +24075,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "10d0abaa-1305-4482-a5b6-af3060c01075",
@@ -24088,7 +24101,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "1bf7701c-9248-465d-a77a-cc754ff1a65e",
@@ -24113,7 +24127,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "00d1815f-8752-472b-8e1f-805431e96952",
@@ -24140,7 +24155,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "0ae51e4d-6c87-467f-b630-85548b428310",
@@ -24174,7 +24190,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "9641c132-0601-11e8-ae97-52543be04c81",
@@ -24201,7 +24218,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "7912ccbd-e75d-425c-85b9-0b2ac2a4b213",
@@ -24226,7 +24244,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "f90ef2e5-4681-493a-bfa0-15627e3fb248",
@@ -24253,7 +24272,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "8256be22-e128-4c80-92dc-5660f5cbbc77",
@@ -24281,7 +24301,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "e1651914-bd89-4cbb-a80a-18892f8a2757",
@@ -24312,7 +24333,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "434c8386-c889-47b3-aad6-42100dc1b84f",
@@ -24341,7 +24363,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "6d1e1d4c-a321-11e9-a787-52543be04c81",
@@ -24371,7 +24394,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "960ef757-0601-11e8-ae97-52543be04c81",
@@ -24399,7 +24423,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "6d4f60a9-fafa-474a-8917-8999fd1db5b5",
@@ -24424,7 +24449,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "937de10c-0885-4041-aa36-2c5198d2d762",
@@ -24456,7 +24482,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "9611d448-0601-11e8-ae97-52543be04c81",
@@ -24485,7 +24512,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "d286d583-aab7-11e8-a907-52543be04c81",
@@ -24510,7 +24538,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "8b4cd7d2-60f0-406d-8443-a71e13fe9221",
@@ -24537,7 +24566,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "7f91d997-3eb4-4aa3-8a43-6fb812bd6bf0",
@@ -24562,7 +24592,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "f43d2752-f2c0-4338-8bab-4a5c69564a3b",
@@ -24587,7 +24618,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "c97e2821-9f9e-4ee3-b043-25823e459832",
@@ -24612,7 +24644,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "83aee402-c381-458e-b471-16a806e8dd69",
@@ -24637,7 +24670,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "a5caf186-4062-45e9-b4df-6822d7b26aee",
@@ -24668,7 +24702,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "2fc5631b-1e93-400d-8a85-496d2b0589db",
@@ -24693,7 +24728,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "8914355a-6111-4fd4-a2a9-1e44f2e59e44",
@@ -24720,7 +24756,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "ef10a866-78d9-4b7b-9e37-faec81cd4026",
@@ -24748,7 +24785,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "960ef824-0601-11e8-ae97-52543be04c81",
@@ -24776,7 +24814,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "133a4c16-f338-11e9-a96c-52543be04c81",
@@ -24806,7 +24845,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "ee637e36-55c7-4049-b730-40c339d53721",
@@ -24834,7 +24874,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "43ed1a29-6cce-4a82-95cd-e644a0579f1b",
@@ -24862,7 +24903,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "id": "445ea8d4-c41c-466c-a7bf-713c906781d7",
@@ -24891,7 +24933,8 @@
         "measuredBitrate": null,
         "stability": null,
         "notes": null
-      }
+      },
+      "reviewDecision": "KEEP"
     },
     {
       "name": "kronehit",
@@ -24916,7 +24959,8 @@
         "status": "NOT_TESTED"
       },
       "rescanBatch": "four-stations-2026-10-27",
-      "addedAt": "2026-10-27T21:17:18.213558+00:00"
+      "addedAt": "2026-10-27T21:17:18.213558+00:00",
+      "reviewDecision": "KEEP"
     }
   ]
 }
